@@ -1,0 +1,18 @@
+{
+    "properties": [
+        {
+            "name": "tiny-link.tiny-link-domain",
+            "type": "java.lang.String",
+            "description": "Description for tiny-link.tiny-link-domain."
+        },
+        {
+            "name": "tiny-link.domain",
+            "type": "java.lang.String",
+            "description": "Description for tiny-link.domain."
+        },
+        {
+            "name": "tiny-link.tiny-strategy",
+            "type": "java.lang.String",
+            "description": "Description for tiny-link.tiny-strategy."
+        }
+    ] }

@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    username: root
+    password: chencong
+    url: jdbc:mysql://localhost:3306/tiny-link
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+  application:
+    name: tinylink
+
+tiny-link:
+  domain: http://localhost:8080
+  tiny-link-domain: http://localhost:8080/t/
+  tiny-strategy: digest
