@@ -29,6 +29,7 @@
         <tiny-link-common.version>0.0.1-SNAPSHOT</tiny-link-common.version>
         <guava.version>20.0</guava.version>
         <springfox-boot-starter.version>3.0.0</springfox-boot-starter.version>
+        <ccoder-common.version>1.0-SNAPSHOT</ccoder-common.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -47,12 +48,6 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>cc.ccoder</groupId>
-                <artifactId>tiny-link-common</artifactId>
-                <version>${tiny-link-common.version}</version>
             </dependency>
             <dependency>
                 <groupId>cc.ccoder</groupId>
@@ -77,6 +72,11 @@
                 <version>${springfox-boot-starter.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>cc.ccoder</groupId>
+                <artifactId>ccoder-common</artifactId>
+                <version>${ccoder-common.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

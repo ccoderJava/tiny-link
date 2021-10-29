@@ -1,10 +1,9 @@
 package cc.ccoder.tinylink.ext.strategy;
 
-import java.util.List;
-
+import cc.ccoder.common.template.factory.AbstractCodeServiceFactory;
 import org.springframework.stereotype.Component;
 
-import cc.ccoder.tinylink.common.template.AbstractCodeServiceFactory;
+import java.util.List;
 
 /**
  * <p>

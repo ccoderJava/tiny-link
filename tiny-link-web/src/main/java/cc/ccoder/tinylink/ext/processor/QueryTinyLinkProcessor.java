@@ -1,18 +1,17 @@
 package cc.ccoder.tinylink.ext.processor;
 
-import java.util.concurrent.ExecutionException;
-
-import org.springframework.stereotype.Component;
-
-import cc.ccoder.tinylink.common.common.ApplyStatusEnum;
-import cc.ccoder.tinylink.common.common.CommonResponseCode;
-import cc.ccoder.tinylink.common.exception.FailException;
-import cc.ccoder.tinylink.common.template.AbstractProcessTemplate;
+import cc.ccoder.common.base.ApplyStatusEnum;
+import cc.ccoder.common.base.CommonResponseCode;
+import cc.ccoder.common.exception.FailException;
+import cc.ccoder.common.template.factory.AbstractProcessTemplate;
 import cc.ccoder.tinylink.entity.TinyLink;
 import cc.ccoder.tinylink.ext.integration.CacheClient;
 import cc.ccoder.tinylink.facade.request.TinyLinkQueryRequest;
 import cc.ccoder.tinylink.facade.response.TinyLinkQueryResponse;
 import cc.ccoder.tinylink.repository.TinyLinkRepository;
+import org.springframework.stereotype.Component;
+
+import java.util.concurrent.ExecutionException;
 
 /**
  * <p>
@@ -52,7 +51,7 @@ public class QueryTinyLinkProcessor extends AbstractProcessTemplate<TinyLinkQuer
     @Override
     protected void process(TinyLinkQueryRequest request, TinyLinkQueryResponse response) {
         try {
-            String originLink = (String)cacheClient.get(request.getTinyLink(), () -> {
+            String originLink = (String) cacheClient.get(request.getTinyLink(), () -> {
                 TinyLink tinyLink = tinyLinkRepository.queryTinyLink(request.getTinyLink());
                 if (tinyLink == null) {
                     throw new FailException(CommonResponseCode.NOT_EXIST, CommonResponseCode.NOT_EXIST.getMessage());

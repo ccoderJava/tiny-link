@@ -3,9 +3,9 @@ package cc.ccoder.tinylink.facade.request;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import cc.ccoder.common.request.AbstractRequest;
 import org.hibernate.validator.constraints.Length;
 
-import cc.ccoder.tinylink.common.request.AbstractRequest;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

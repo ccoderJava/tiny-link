@@ -1,15 +1,13 @@
 package cc.ccoder.tinylink.ext.integration.impl;
 
+import cc.ccoder.tinylink.ext.integration.CacheClient;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
+import org.springframework.stereotype.Component;
+
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
-
-import org.springframework.stereotype.Component;
-
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
-
-import cc.ccoder.tinylink.ext.integration.CacheClient;
 
 /**
  * <p>

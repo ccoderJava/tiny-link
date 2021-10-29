@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>cc.ccoder</groupId>
-            <artifactId>tiny-link-common</artifactId>
+            <artifactId>ccoder-common</artifactId>
         </dependency>
     </dependencies>
 
