@@ -1,6 +1,6 @@
 package cc.ccoder.tinylink.ext.strategy;
 
-import cc.ccoder.tinylink.common.base.CodeEnum;
+import cc.ccoder.common.base.CodeEnum;
 
 /**
  * <p>

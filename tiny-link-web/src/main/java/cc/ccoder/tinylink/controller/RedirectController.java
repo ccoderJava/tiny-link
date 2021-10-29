@@ -1,11 +1,11 @@
 package cc.ccoder.tinylink.controller;
 
+import cc.ccoder.common.base.ApplyStatusEnum;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import cc.ccoder.tinylink.common.common.ApplyStatusEnum;
 import cc.ccoder.tinylink.ext.processor.QueryTinyLinkProcessor;
 import cc.ccoder.tinylink.facade.request.TinyLinkQueryRequest;
 import cc.ccoder.tinylink.facade.response.TinyLinkQueryResponse;

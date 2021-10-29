@@ -1,8 +1,8 @@
 package cc.ccoder.tinylink.common;
 
+import cc.ccoder.common.base.CodeMessageEnum;
 import org.apache.commons.lang3.StringUtils;
 
-import cc.ccoder.tinylink.common.base.CodeMessageEnum;
 
 /**
  * <p>
@@ -22,9 +22,7 @@ public enum TinyLinkType implements CodeMessageEnum {
     /**
      * 自定义生成
      */
-    CUSTOM("C", "custom")
-
-    ;
+    CUSTOM("C", "custom");
 
     private final String code;
 

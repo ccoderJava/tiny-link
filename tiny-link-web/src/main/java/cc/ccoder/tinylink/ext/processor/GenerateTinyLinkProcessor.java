@@ -1,19 +1,12 @@
 package cc.ccoder.tinylink.ext.processor;
 
-import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
-
+import cc.ccoder.common.base.ApplyStatusEnum;
+import cc.ccoder.common.base.CommonResponseCode;
+import cc.ccoder.common.exception.FailException;
+import cc.ccoder.common.template.factory.AbstractProcessTemplate;
+import cc.ccoder.common.util.ValidatorUtil;
 import cc.ccoder.tinylink.common.TinyLinkConstant;
 import cc.ccoder.tinylink.common.TinyLinkType;
-import cc.ccoder.tinylink.common.common.ApplyStatusEnum;
-import cc.ccoder.tinylink.common.common.CommonResponseCode;
-import cc.ccoder.tinylink.common.exception.FailException;
-import cc.ccoder.tinylink.common.template.AbstractProcessTemplate;
-import cc.ccoder.tinylink.common.util.ValidatorUtil;
 import cc.ccoder.tinylink.configuration.TinyLinkConfiguration;
 import cc.ccoder.tinylink.entity.TinyLink;
 import cc.ccoder.tinylink.ext.integration.CacheClient;
@@ -23,6 +16,12 @@ import cc.ccoder.tinylink.facade.request.TinyLinkRequest;
 import cc.ccoder.tinylink.facade.response.TinyLinkGenerateResponse;
 import cc.ccoder.tinylink.repository.TinyLinkRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
+
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -45,7 +44,7 @@ public class GenerateTinyLinkProcessor extends AbstractProcessTemplate<TinyLinkR
     private final CacheClient cacheClient;
 
     public GenerateTinyLinkProcessor(TinyLinkConfiguration tinyLinkConfiguration, TinyLinkRepository tinyLinkRepository,
-        TinyLinkAlgorithmStrategyFactory tinyLinkStrategyFactory, CacheClient cacheClient) {
+                                     TinyLinkAlgorithmStrategyFactory tinyLinkStrategyFactory, CacheClient cacheClient) {
         this.tinyLinkConfiguration = tinyLinkConfiguration;
         this.tinyLinkRepository = tinyLinkRepository;
         this.tinyLinkStrategyFactory = tinyLinkStrategyFactory;
@@ -83,8 +82,8 @@ public class GenerateTinyLinkProcessor extends AbstractProcessTemplate<TinyLinkR
             // 已存在 放入缓存 直接返回
             cacheClient.put(tinyLink.getTinyLink(), tinyLink.getOriginLink());
             TinyLinkInfo tinyLinkInfo = TinyLinkInfo.builder().tinyType(tinyLink.getLinkType())
-                .tinyLink(tinyLinkConfiguration.getTinyLinkDomain() + tinyLink.getTinyLink())
-                .originLink(request.getOriginLink()).timestamp(System.currentTimeMillis()).build();
+                    .tinyLink(tinyLinkConfiguration.getTinyLinkDomain() + tinyLink.getTinyLink())
+                    .originLink(request.getOriginLink()).timestamp(System.currentTimeMillis()).build();
             response.setTinyLinkInfo(tinyLinkInfo);
             response.setApplyStatus(ApplyStatusEnum.SUCCESS);
             return;
@@ -100,7 +99,7 @@ public class GenerateTinyLinkProcessor extends AbstractProcessTemplate<TinyLinkR
         if (StringUtils.isBlank(request.getCustomTinyLink())) {
             // 系统计算生成短链接
             String link = tinyLinkStrategyFactory.getService(tinyLinkConfiguration.getTinyStrategy().getCode())
-                .algorithmGenerate(request.getOriginLink());
+                    .algorithmGenerate(request.getOriginLink());
             currentTinyLink.setTinyLink(link);
             currentTinyLink.setLinkType(TinyLinkType.SYSTEM.getCode());
         } else {
@@ -113,16 +112,15 @@ public class GenerateTinyLinkProcessor extends AbstractProcessTemplate<TinyLinkR
 
         response.setApplyStatus(ApplyStatusEnum.SUCCESS);
         TinyLinkInfo tinyLinkInfo = TinyLinkInfo.builder().tinyType(currentTinyLink.getLinkType())
-            .tinyLink(tinyLinkConfiguration.getTinyLinkDomain() + currentTinyLink.getTinyLink())
-            .originLink(request.getOriginLink()).timestamp(System.currentTimeMillis()).build();
+                .tinyLink(tinyLinkConfiguration.getTinyLinkDomain() + currentTinyLink.getTinyLink())
+                .originLink(request.getOriginLink()).timestamp(System.currentTimeMillis()).build();
         response.setTinyLinkInfo(tinyLinkInfo);
     }
 
     /**
      * 校验自定义短链接是否已经存在
-     * 
-     * @param request
-     *            请求参数
+     *
+     * @param request 请求参数
      */
     private void validateCustomTinyLink(TinyLinkRequest request) {
         if (StringUtils.isBlank(request.getCustomTinyLink())) {
@@ -131,15 +129,14 @@ public class GenerateTinyLinkProcessor extends AbstractProcessTemplate<TinyLinkR
         TinyLink tinyLink = tinyLinkRepository.queryTinyLink(request.getCustomTinyLink());
         if (tinyLink != null) {
             throw new FailException(CommonResponseCode.BIZ_CHECK_FAIL,
-                String.format("自定义短链接[%s]已存在", request.getCustomTinyLink()));
+                    String.format("自定义短链接[%s]已存在", request.getCustomTinyLink()));
         }
     }
 
     /**
      * 补足源链接协议
-     * 
-     * @param originLink
-     *            源链接
+     *
+     * @param originLink 源链接
      * @return 源链接
      */
     private String getOriginalLink(String originLink) {

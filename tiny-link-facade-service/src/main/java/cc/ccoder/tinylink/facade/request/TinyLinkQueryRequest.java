@@ -1,6 +1,6 @@
 package cc.ccoder.tinylink.facade.request;
 
-import cc.ccoder.tinylink.common.request.AbstractRequest;
+import cc.ccoder.common.request.AbstractRequest;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

@@ -1,6 +1,6 @@
 package cc.ccoder.tinylink.facade.response;
 
-import cc.ccoder.tinylink.common.response.CommonResponse;
+import cc.ccoder.common.response.CommonResponse;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

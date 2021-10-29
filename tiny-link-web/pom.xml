@@ -40,7 +40,7 @@
 
         <dependency>
             <groupId>cc.ccoder</groupId>
-            <artifactId>tiny-link-common</artifactId>
+            <artifactId>ccoder-common</artifactId>
         </dependency>
         <dependency>
             <groupId>cc.ccoder</groupId>
@@ -50,6 +50,11 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
         </dependency>
 
     </dependencies>
